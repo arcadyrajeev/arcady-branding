@@ -23,7 +23,7 @@ export default function HomeHero() {
         className="absolute inset-0 h-[120%] w-full"
       >
         <Image
-          src="/images/arcady-hero-bg-big.png"
+          src="/images/arcady-hero-bg.webp"
           alt=""
           fill
           priority
@@ -41,7 +41,7 @@ export default function HomeHero() {
           style={{ y: headlineY }}
           className="relative z-20 max-w-[1200px]"
         >
-          <h1 className="flex flex-wrap font-zen-dots items-center text-5xl sm:text-6xl md:text-[11vw] leading-[0.8] tracking-[-0.04em] text-black">
+          <h1 className="flex flex-wrap font-zen-dots items-center text-[8vh] md:text-[11vw] leading-[0.8] tracking-[-0.04em] text-black">
             <span>ARC</span>
             <span className="text-[#650914]">ADY</span>
           </h1>
@@ -70,9 +70,9 @@ export default function HomeHero() {
         {/* Bottom Left Positioning */}
         <motion.div
           style={{ y: positioningY }}
-          className="absolute bottom-[20%] left-6 z-20 max-w-[320px] md:bottom-[18%] md:left-12 mix-blend-difference"
+          className="absolute bottom-[10%] md:bottom-[20%] left-6 z-20 max-w-[320px] md:bottom-[18%] md:left-12 mix-blend-difference"
         >
-          <p className="text-lg font-light font-alan-sans leading-[1.35] uppercase text-red-100 md:text-2xl">
+          <p className=" font-light font-alan-sans leading-[1.35] uppercase text-red-100 text-2xl">
             Luxury Branding
             <br />
             Studio for Ambitious
