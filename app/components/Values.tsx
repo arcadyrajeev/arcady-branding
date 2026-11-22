@@ -9,9 +9,9 @@ export default function Values() {
       <div className="mx-auto max-w-[1800px]">
         {/* Label */}
         <div className="mb-12 flex items-center gap-4">
-          <span className="text-[#650914]">//</span>
-          <p className="font-alan-sans text-sm uppercase tracking-[0.15em]">
-            About Arcady
+          <span className="text-lg font-bold text-[#650914]">//</span>
+          <p className="font-alan-sans text-lg uppercase tracking-[0.15em]">
+            ABOUT ARCADY
           </p>
         </div>
 

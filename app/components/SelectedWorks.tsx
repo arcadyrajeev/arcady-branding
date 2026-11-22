@@ -1,138 +1,176 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, Variants } from "framer-motion";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
 
-const projects = [
+interface ProjectItem {
+  id: string;
+  title: string[];
+  tags: string[];
+  image: string;
+  alt: string;
+  href: string;
+}
+
+const SELECTED_PROJECTS: ProjectItem[] = [
   {
-    title: "Élanore Joaillerie",
-    category: "Brand Identity / Strategy",
+    id: "elanore-joaillerie",
+    title: ["ÉLANORE", "JOAILLERIE"],
+    tags: ["BRAND IDENTITY", "STRATEGY"],
     image: "/images/brands/elanore-cover-2.png",
-    href: "/work/elanore",
+    alt: "Élanore Joaillerie brand identity and luxury jewelry presentation",
+    href: "/work/elanore-joaillerie",
   },
   {
-    title: "Seline",
-    category: "Visual Identity / Digital",
-    image: "/images/brands/silene-cover-2.png",
-    href: "/work/seline",
+    id: "silene",
+    title: ["SILENE"],
+    tags: ["PERFUME", "BRAND IDENTITY", "PACKAGING"],
+    image: "/images/projects/silene.jpg",
+    alt: "Silene fragrance bottle and visual identity showcase",
+    href: "/work/silene",
   },
   {
-    title: "RupeeFlow",
-    category: "Brand System / Digital",
-    image: "/images/brands/rupeeflow-cover-2.png",
+    id: "RupeeFlow",
+    title: ["RUPEE", "FLOW"],
+    tags: ["FINTECH", "BRAND IDENTITY", "UI DESIGN"],
+    image: "/images/projects/rupeeflow.jpg",
+    alt: "RupeeFlow fintech brand identity and digital product interface",
     href: "/work/rupeeflow",
   },
+  {
+    id: "closex-pay",
+    title: ["CLOSEX", "PAY"],
+    tags: ["FINTECH", "BRAND IDENTITY", "UI DESIGN"],
+    image: "/images/projects/closex-pay.jpg",
+    alt: "CloseX Pay fintech brand identity and digital product interface",
+    href: "/work/closex-pay",
+  },
 ];
+
+const rowVariants: Variants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.65,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
 
 export default function SelectedWorks() {
   return (
     <section
       id="work"
-      className="overflow-hidden bg-[#f4e8dc] px-6 py-20 md:px-12 md:py-28"
+      className="w-full bg-[#F5EAE8] text-[#1A1717]  font-alan-sans py-16 sm:py-20 lg:py-28 px-5 sm:px-8 md:px-12 lg:px-16"
     >
-      <div className="mx-auto max-w-[1800px]">
-        {/* Section Label */}
-        <div className="mb-10 flex items-center gap-4">
-          <span className="font-alan-sans text-[#650914]">//</span>
-          <span className="font-alan-sans text-sm uppercase tracking-[0.15em] text-black">
-            Selected Work
-          </span>
+      <div className="max-w-[1440px] mx-auto">
+        {/* Top Metadata Eyebrow */}
+        <div className="mb-12 flex items-center gap-4">
+          <span className="text-lg font-bold text-[#650914]">//</span>
+          <p className="font-alan-sans text-lg uppercase tracking-[0.15em]">
+            SELECTED WORKS
+          </p>
         </div>
 
-        {/* Featured Project */}
-        <Link
-          href={projects[0].href}
-          className="group grid grid-cols-1 gap-6 md:grid-cols-[280px_1fr] lg:grid-cols-[320px_1fr]"
-        >
-          {/* Project Information */}
-          <div className="flex flex-col justify-end pb-3">
-            <motion.div
-              initial={{ opacity: 0, x: -25 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-            >
-              <h3 className="font-alan-sans text-[clamp(2.5rem,5vw,5rem)] font-medium leading-[0.9] tracking-[-0.06em] text-stone-900">
-                Élanore
-                <br />
-                Joaillerie
-              </h3>
+        {/* Alternating Project Rows */}
+        <div className="flex flex-col gap-16 sm:gap-20 lg:gap-28">
+          {SELECTED_PROJECTS.map((project, index) => {
+            const isReversed = index % 2 === 1;
 
-              <p className="mt-6 font-alan-sans text-xs uppercase tracking-[0.15em] text-black/60">
-                Brand Identity / Strategy
-              </p>
-            </motion.div>
-          </div>
+            return (
+              <motion.article
+                key={project.id}
+                variants={rowVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                className="group grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-end"
+              >
+                {/* Text Column (Bottom-Aligned to Image Baseline) */}
+                <div
+                  className={`lg:col-span-3 flex flex-col justify-end order-2 ${
+                    isReversed
+                      ? "lg:order-2 lg:items-end lg:text-right"
+                      : "lg:order-1 lg:items-start lg:text-left"
+                  }`}
+                >
+                  <Link
+                    href={project.href}
+                    className="inline-block focus:outline-none"
+                  >
+                    <h3 className="text-4xl lg:text-[4vw] flex flex-wrap font-extrabold leading-[0.98] tracking-[-0.025em] uppercase text-[#1D1919] transition-colors duration-300 group-hover:text-[#5E111B]">
+                      {project.title.map((line, lineIdx) => (
+                        <span key={lineIdx} className="flex">
+                          {line}
+                        </span>
+                      ))}
+                    </h3>
 
-          {/* Featured Image */}
-          <div className="relative aspect-[16/7] overflow-hidden bg-[#45060d]">
-            <Image
-              src={projects[0].image}
-              alt={projects[0].title}
-              fill
-              priority
-              className="object-cover object-left transition-transform duration-1000 ease-out group-hover:scale-[1.04]"
-            />
+                    <div className="mt-4 sm:mt-5 flex flex-wrap lg:flex-col gap-3 md:gap-0.5  ">
+                      {project.tags.map((tag) => (
+                        <p
+                          key={tag}
+                          className="text-lg md:text-[1.5vw] font-medium tracking-1 uppercase text-[#574E4E]"
+                        >
+                          {tag}
+                        </p>
+                      ))}
+                    </div>
+                  </Link>
+                </div>
 
-            <div className="absolute right-5 top-5 flex h-12 w-12 items-center justify-center rounded-full border border-white/50 text-white transition-all duration-300 group-hover:bg-white group-hover:text-black">
-              <ArrowUpRight size={20} />
-            </div>
-          </div>
-        </Link>
+                {/* Wide Landscape Banner Column */}
+                <div
+                  className={`lg:col-span-9 order-1 ${
+                    isReversed ? "lg:order-1" : "lg:order-2"
+                  }`}
+                >
+                  <Link
+                    href={project.href}
+                    aria-label={`View ${project.title.join(" ")} case study`}
+                    className="relative block w-full aspect-[16/9] sm:aspect-[16/6] bg-[#0B131E] overflow-hidden focus:outline-none"
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.025 }}
+                      transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+                      className="relative w-full h-full"
+                    >
+                      <Image
+                        src={project.image}
+                        alt={project.alt}
+                        fill
+                        priority={index === 0}
+                        sizes="(max-width: 1024px) 100vw, 75vw"
+                        className="object-cover object-left"
+                      />
+                    </motion.div>
 
-        {/* Secondary Projects */}
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
-          {/* Seline */}
-          <Link href={projects[1].href} className="group  overflow-hidden">
-            <div className="relative aspect-[16/9] overflow-hidden bg-[#1c1c1c]">
-              <Image
-                src={projects[1].image}
-                alt={projects[1].title}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
-              />
-
-              <div className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/50 text-white transition-all group-hover:bg-white group-hover:text-black">
-                <ArrowUpRight size={18} />
-              </div>
-            </div>
-          </Link>
-
-          {/* RupeeFlow */}
-          <Link href={projects[2].href} className="group overflow-hidden">
-            <div className="relative aspect-[16/9] overflow-hidden bg-[#00271e]">
-              <Image
-                src={projects[2].image}
-                alt={projects[2].title}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
-              />
-
-              <div className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/50 text-white transition-all group-hover:bg-white group-hover:text-black">
-                <ArrowUpRight size={18} />
-              </div>
-            </div>
-          </Link>
+                    {/* Top-Right Circular Action Button */}
+                    <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white text-[#111111] flex items-center justify-center shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:bg-[#5E111B] group-hover:text-white">
+                      <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </div>
+                  </Link>
+                </div>
+              </motion.article>
+            );
+          })}
         </div>
 
-        {/* View All */}
-        <Link
-          href="/work"
-          className="group mt-12 flex items-center justify-between border-t border-[#650914]/30 pt-5"
-        >
-          <span className="font-alan-sans text-sm uppercase tracking-[0.15em] text-black">
-            Explore More
-          </span>
-
-          <ArrowRight
-            size={22}
-            className="text-[#650914] transition-transform duration-300 group-hover:translate-x-2"
-          />
-        </Link>
+        {/* Bottom Explore More Bar */}
+        <div className="mt-16 sm:mt-20 lg:mt-24 pt-6 border-t border-black/10 flex items-center justify-between">
+          <Link
+            href="/work"
+            className="group/btn inline-flex items-center gap-3 text-lg md:text-xl font-semibold tracking-[0.14em] uppercase text-[#1D1919] hover:text-[#5E111B] transition-colors"
+          >
+            <span>EXPLORE MORE</span>
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1.5" />
+          </Link>
+        </div>
       </div>
     </section>
   );

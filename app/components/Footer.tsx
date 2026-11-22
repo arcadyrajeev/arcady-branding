@@ -46,7 +46,7 @@ export default function Footer({ image }: FooterProps) {
         {/* Main */}
         <div className="flex flex-col justify-between gap-12 md:flex-row md:items-end">
           <div>
-            <h2 className="max-w-3xl text-4xl font-medium leading-tight md:text-6xl">
+            <h2 className="max-w-3xl text-4xl font-medium leading-[1] md:text-6xl">
               Build a brand
               <br />
               that moves forward.
