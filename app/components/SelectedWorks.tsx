@@ -28,7 +28,7 @@ const SELECTED_PROJECTS: ProjectItem[] = [
     id: "silene",
     title: ["SILENE"],
     tags: ["PERFUME", "BRAND IDENTITY", "PACKAGING"],
-    image: "/images/projects/silene.jpg",
+    image: "/images/brands/silene-cover.png",
     alt: "Silene fragrance bottle and visual identity showcase",
     href: "/work/silene",
   },
@@ -36,7 +36,7 @@ const SELECTED_PROJECTS: ProjectItem[] = [
     id: "RupeeFlow",
     title: ["RUPEE", "FLOW"],
     tags: ["FINTECH", "BRAND IDENTITY", "UI DESIGN"],
-    image: "/images/projects/rupeeflow.jpg",
+    image: "/images/brands/rupeeflow-cover.png",
     alt: "RupeeFlow fintech brand identity and digital product interface",
     href: "/work/rupeeflow",
   },
@@ -44,7 +44,7 @@ const SELECTED_PROJECTS: ProjectItem[] = [
     id: "closex-pay",
     title: ["CLOSEX", "PAY"],
     tags: ["FINTECH", "BRAND IDENTITY", "UI DESIGN"],
-    image: "/images/projects/closex-pay.jpg",
+    image: "/images/brands/closexpay-cover.png",
     alt: "CloseX Pay fintech brand identity and digital product interface",
     href: "/work/closex-pay",
   },
@@ -138,7 +138,7 @@ export default function SelectedWorks() {
                     <motion.div
                       whileHover={{ scale: 1.025 }}
                       transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-                      className="relative w-full h-full"
+                      className="absolute w-full h-full"
                     >
                       <Image
                         src={project.image}
@@ -146,7 +146,7 @@ export default function SelectedWorks() {
                         fill
                         priority={index === 0}
                         sizes="(max-width: 1024px) 100vw, 75vw"
-                        className="object-cover object-left"
+                        className="object-cover object-left left-20 md:left-0"
                       />
                     </motion.div>
 
