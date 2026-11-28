@@ -116,7 +116,7 @@ export default function Process() {
               DESIGN.
             </h2>
 
-            <p className="mt-6 lg:mt-10 text-lg md:text-[1.4vw] font-medium leading-[1.45] tracking-[0.02em] uppercase text-[#262626] ">
+            <p className="mt-6 lg:mt-10 text-lg md:text-[1.4vw] max-w-[540px] font-medium leading-[1.45] tracking-[0.02em] uppercase text-[#262626] ">
               FROM INITIAL POSITIONING TO FINAL LAUNCH, EVERY DETAIL IS
               CONSIDERED, MEASURED, AND MADE TO HOLD VALUE OVER TIME.
             </p>

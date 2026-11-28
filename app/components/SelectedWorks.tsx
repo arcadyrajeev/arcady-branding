@@ -18,7 +18,7 @@ interface ProjectItem {
 const SELECTED_PROJECTS: ProjectItem[] = [
   {
     id: "elanore-joaillerie",
-    title: ["ÉLANORE ", "JOAILLERIE"],
+    title: ["ÉLANORE ", " JOAILLERIE"],
     tags: ["BRAND IDENTITY", "STRATEGY"],
     image: "/images/brands/elanore-cover-2.png",
     alt: "Élanore Joaillerie brand identity and luxury jewelry presentation",
@@ -105,7 +105,7 @@ export default function SelectedWorks() {
                   >
                     <h3 className="text-4xl lg:text-[4vw] flex flex-wrap font-extrabold leading-[0.98] tracking-[-0.025em] uppercase text-[#1D1919] transition-colors duration-300 group-hover:text-[#5E111B]">
                       {project.title.map((line, lineIdx) => (
-                        <span key={lineIdx} className="flex">
+                        <span key={lineIdx} className="flex pr-2">
                           {line}
                         </span>
                       ))}

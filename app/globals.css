@@ -22,3 +22,32 @@
     --foreground: #ededed;
   }
 }
+
+/* Seamless Infinite Logo Marquee */
+
+@keyframes infinite-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: infinite-marquee 45s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}

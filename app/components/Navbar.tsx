@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import Image from "next/image";
 
 const navItems = [
   { label: "WORK", href: "#work" },
@@ -42,9 +43,15 @@ export default function Navbar() {
         {/* Desktop Contact */}
         <Link
           href="#contact"
-          className="hidden rounded-full bg-red-950 px-6 py-3 font-alan-sans text-sm text-white transition-colors duration-300 hover:bg-red-900 md:block"
+          aria-label="Contact Arcady Design"
+          className="group relative mt-1 block md:w-[12vw] h-full aspect-[4.1/1] overflow-hidden transition-transform duration-500 hover:scale-[1.025] active:scale-[0.99]"
         >
-          CONTACT
+          <Image
+            src="/images/arcady-contact.webp"
+            alt="Contact Us"
+            fill
+            className="object-contain h-[90%] transition-all duration-500 group-hover:brightness-110"
+          />
         </Link>
 
         {/* Mobile Menu Button */}
@@ -92,10 +99,16 @@ export default function Navbar() {
 
           <Link
             href="#contact"
-            onClick={() => setMenuOpen(false)}
-            className="mt-6 flex items-center justify-center rounded-full bg-red-950 px-6 py-4 font-alan-sans text-sm text-white"
+            aria-label="Contact Arcady Design"
+            className="group relative mt-3 block w-full max-w-[250px] aspect-[4.1/1] overflow-hidden transition-transform duration-500 hover:scale-[1.025] active:scale-[0.99]"
           >
-            CONTACT
+            <Image
+              src="/images/arcady-contact.webp"
+              alt="Contact Us"
+              fill
+              sizes="360px"
+              className="object-contain transition-all duration-500 group-hover:brightness-110"
+            />
           </Link>
         </div>
       </div>
