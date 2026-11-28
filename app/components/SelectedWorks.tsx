@@ -18,7 +18,7 @@ interface ProjectItem {
 const SELECTED_PROJECTS: ProjectItem[] = [
   {
     id: "elanore-joaillerie",
-    title: ["ÉLANORE", "JOAILLERIE"],
+    title: ["ÉLANORE ", "JOAILLERIE"],
     tags: ["BRAND IDENTITY", "STRATEGY"],
     image: "/images/brands/elanore-cover-2.png",
     alt: "Élanore Joaillerie brand identity and luxury jewelry presentation",
